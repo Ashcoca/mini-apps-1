@@ -4,3 +4,35 @@
     margin: 5px;
     padding: 5px;
 }
+
+.board-container {
+    border: 1px;
+    border-style: solid;
+    margin: 5px;
+    padding: 25px;
+    position: relative;
+    width: 120px;
+    border-color: black;
+}
+
+.board-container-cat {
+    border: 3px;
+    border-style: solid;
+    margin: 5px;
+    padding: 25px;
+    position: relative;
+    width: 120px;
+    border-color: red;
+}
+
+#first-row {
+    width: 100%;
+}
+
+#second-row {
+    width: 100%
+}
+
+#third-row {
+    width: 100%
+}
