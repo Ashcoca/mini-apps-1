@@ -5,26 +5,31 @@
         <link rel = "stylesheet" href="styles.css">
     </head>
     <body>
-        <h1>TIC TAC TOE!</h1>
-        <h2 id="turn-text">X's Turn</h1>
+        <div class="text-container">
+            <h2>TIC TAC TOE!</h2>
+            <center><h3 id="turn-text">X's Turn</h3></center>
+        </div>
+
         <div id="container" class="board-container">
-            <div id="first-row">
-                <span class="box" id ="box1" onclick="clickBox()">[ ]</span>
-                <span class="box" id ="box2" onclick="clickBox()">[ ]</span>
-                <span class="box" id ="box3" onclick="clickBox()">[ ]</span>
-            </div>
+            <!-- <div id="first-row"> -->
+                <span class="box" id ="box1" onclick="clickBox()"></span>
+                <span class="box" id ="box2" onclick="clickBox()"></span>
+                <span class="box" id ="box3" onclick="clickBox()"></span>
+            <!-- </div> -->
             <br/>
-            <div id="second-row">
-                <span class="box" id ="box4" onclick="clickBox()">[ ]</span>
-                <span class="box" id ="box5" onclick="clickBox()">[ ]</span>
-                <span class="box" id ="box6" onclick="clickBox()">[ ]</span>
-            </div>
+            <!-- <div id="second-row"> -->
+                <span class="box" id ="box4" onclick="clickBox()"></span>
+                <span class="box" id ="box5" onclick="clickBox()"></span>
+                <span class="box" id ="box6" onclick="clickBox()"></span>
+            <!-- </div> -->
             <br/>
-            <div id="third-row">
-                <span class="box" id ="box7" onclick="clickBox()">[ ]</span>
-                <span class="box" id ="box8" onclick="clickBox()">[ ]</span>
-                <span class="box" id ="box9" onclick="clickBox()">[ ]</span>
-            </div>
+            <!-- <div id="third-row"> -->
+                <span class="box" id ="box7" onclick="clickBox()"></span>
+                <span class="box" id ="box8" onclick="clickBox()"></span>
+                <span class="box" id ="box9" onclick="clickBox()"></span>
+            <!-- </div> -->
+            <h2 id="winner-text"></h2>
+
         </div>
         <br/>
         <button class="button" id="new-game-btn" onclick="clearBoxes()">New Game</button>
