@@ -11,6 +11,7 @@ let winCount = {
 //helper function to check for winners
 var checkWinnerOrCat = function() {
 
+    //there must be a better way to do this
     var box1 = document.getElementById("box1").innerText;
     var box2 = document.getElementById("box2").innerText;
     var box3 = document.getElementById("box3").innerText;
@@ -21,13 +22,14 @@ var checkWinnerOrCat = function() {
     var box8 = document.getElementById("box8").innerText;
     var box9 = document.getElementById("box9").innerText;
 
+    //set board matrix
     let matrix = [
         [box1, box2, box3],
         [box4, box5, box6],
         [box7, box8, box9]
     ];
 
-
+    //loop through matrix to find winners
     for (var i = 0; i < matrix.length; i++) {
         
         //horizontal match
@@ -40,7 +42,7 @@ var checkWinnerOrCat = function() {
         { 
             var winner = this.event.target.innerText 
             gameOver = true;
-            gameWinner(winner)
+            return gameWinner(winner)
         };
         //vertical match
         if (
@@ -50,7 +52,7 @@ var checkWinnerOrCat = function() {
         )
         {   var winner = this.event.target.innerText 
             gameOver = true;
-            gameWinner(winner)
+            return gameWinner(winner)
         };
         //left diagonal
         if (
@@ -60,7 +62,7 @@ var checkWinnerOrCat = function() {
         )
         {   var winner = this.event.target.innerText 
             gameOver = true;
-            gameWinner(winner)
+            return gameWinner(winner)
         };
         //right diagonal
         if (
@@ -70,22 +72,17 @@ var checkWinnerOrCat = function() {
         )
         {   var winner = this.event.target.innerText 
             gameOver = true;
-            gameWinner(winner)
+            return gameWinner(winner)
         };
     }
     
         //handle cat games
         if ((turnCount === 9) && (gameOver === false))  {
-            // var winBox = document.getElementById("winner-text");
-            // winBox.innerText = "Tie!";
-            // // var div = document.getElementsByClassName("board-container");
-            // // //set the board to have a red border
-            // // div[0].setAttribute("class", "board-container-cat");
+
             var boxes = document.getElementsByClassName("box")
             for (var i = 0; i < boxes.length; i++) {
                 boxes[i].setAttribute("class", "box-cat")
             }
-            // winBox.setAttribute("class", "winner-text-visible");
             document.getElementById("new-game-btn").innerText = "Rematch?";
             return;
         }
@@ -100,11 +97,11 @@ var gameWinner = function(winText) {
     winBox.innerText = winnerText + " Wins!";
     winBox.setAttribute("class", "winner-text-visible")
    
-    if (winnerText === "X") {
+    if (playerTurn === "O") {
         winCount.X ++;
         document.getElementById("win-x").innerText = winCount.X;
     }
-    if (winnerText === "O") {
+    if (playerTurn === "X") {
         winCount.O ++;
         document.getElementById("win-o").innerText = winCount.O;
     }
