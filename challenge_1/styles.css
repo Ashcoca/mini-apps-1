@@ -15,10 +15,24 @@
     transition: all 0.30s;
     object-fit: contain;
     font-family: 'Montserrat', sans-serif;
+}
 
-
-
-
+.box-cat {
+    border-radius: 3px;
+    margin: 5px;
+    padding: 5px;
+    height: 50px;
+    width: 20%;
+    display: inline-block;
+    position: static;
+    vertical-align: middle;
+    text-align: center;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
+    font-size: 40px;
+    transition: all 0.30s;
+    object-fit: contain;
+    font-family: 'Montserrat', sans-serif;
+    background-color: red;
 }
 
 .box:hover {
@@ -60,8 +74,17 @@
 
 h1 {
     margin: 5px;
-    margin-left: 20px;
     font-family: 'Montserrat', sans-serif;
+
+}
+
+h2 {
+    visibility: hidden;
+    border-top: 1px;
+    border-top-style: solid;
+    padding: 5px;
+    font-family: 'Montserrat', sans-serif;
+    margin: 5px;
 
 }
 

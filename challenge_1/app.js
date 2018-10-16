@@ -27,17 +27,6 @@ var checkWinnerOrCat = function() {
         [box7, box8, box9]
     ];
 
-    //handle cat games
-    if ((turnCount > 8) && (gameOver === false))  {
-        var winBox = document.getElementById("winner-text");
-        winBox.innerText = "Tie!";
-        var div = document.getElementsByClassName("board-container");
-        //set the board to have a red border
-        div[0].setAttribute("class", "board-container-cat");
-        winBox.setAttribute("class", "winner-text-visible");
-        document.getElementById("new-game-btn").innerText = "Rematch?";
-        return;
-    }
 
     for (var i = 0; i < matrix.length; i++) {
         
@@ -85,18 +74,29 @@ var checkWinnerOrCat = function() {
         };
     }
     
+        //handle cat games
+        if ((turnCount === 9) && (gameOver === false))  {
+            // var winBox = document.getElementById("winner-text");
+            // winBox.innerText = "Tie!";
+            // // var div = document.getElementsByClassName("board-container");
+            // // //set the board to have a red border
+            // // div[0].setAttribute("class", "board-container-cat");
+            var boxes = document.getElementsByClassName("box")
+            for (var i = 0; i < boxes.length; i++) {
+                boxes[i].setAttribute("class", "box-cat")
+            }
+            // winBox.setAttribute("class", "winner-text-visible");
+            document.getElementById("new-game-btn").innerText = "Rematch?";
+            return;
+        }
 
 }
 
 //fn to handle wins
 var gameWinner = function(winText) {
     var winnerText = winText;
-    var winner = document.getElementById("container").children
     var winBox = document.getElementById("winner-text");
 
-    for (var i = 0; i < winner.length; i++) {
-        winner[i].setAttribute("class", "winner")
-    }
     winBox.innerText = winnerText + " Wins!";
     winBox.setAttribute("class", "winner-text-visible")
    
@@ -108,6 +108,7 @@ var gameWinner = function(winText) {
         winCount.O ++;
         document.getElementById("win-o").innerText = winCount.O;
     }
+    return;
 }
 
 //onClick handler
