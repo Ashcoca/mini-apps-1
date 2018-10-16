@@ -2,12 +2,13 @@
     <head>
         <title>TIC! TAC! TOEEEEE!</title>
         <script src = 'app.js'></script>
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
         <link rel = "stylesheet" href="styles.css">
     </head>
     <body>
         <div class="text-container">
-            <h2>TIC TAC TOE!</h2>
-            <center><h3 id="turn-text">X's Turn</h3></center>
+            <center><h2>TIC TAC TOE</h2>
+            <h3 id="turn-text">X's Turn</h3></center>
         </div>
 
         <div id="container" class="board-container">
@@ -33,6 +34,11 @@
         </div>
         <br/>
         <button class="button" id="new-game-btn" onclick="clearBoxes()">New Game</button>
+        <div id="win-box-container">
+            X : <span id="win-x">0</span>
+        <br/>
+            O : <span id="win-o">0</span>
+        </div>
     </body>
 
 

@@ -1,11 +1,15 @@
 
 
-let playerTurn = 0;
+let playerTurn = "X";
 let turnCount = 0;
+let gameOver = false;
+let winCount = {
+    X: 0,
+    O: 0
+    };
 
 //helper function to check for winners
 var checkWinnerOrCat = function() {
-    var winBox = document.getElementById("winner-text");
 
     var box1 = document.getElementById("box1").innerText;
     var box2 = document.getElementById("box2").innerText;
@@ -23,6 +27,18 @@ var checkWinnerOrCat = function() {
         [box7, box8, box9]
     ];
 
+    //handle cat games
+    if ((turnCount > 8) && (gameOver === false))  {
+        var winBox = document.getElementById("winner-text");
+        winBox.innerText = "Tie!";
+        var div = document.getElementsByClassName("board-container");
+        //set the board to have a red border
+        div[0].setAttribute("class", "board-container-cat");
+        winBox.setAttribute("class", "winner-text-visible");
+        document.getElementById("new-game-btn").innerText = "Rematch?";
+        return;
+    }
+
     for (var i = 0; i < matrix.length; i++) {
         
         //horizontal match
@@ -34,6 +50,7 @@ var checkWinnerOrCat = function() {
         ) 
         { 
             var winner = this.event.target.innerText 
+            gameOver = true;
             gameWinner(winner)
         };
         //vertical match
@@ -43,6 +60,7 @@ var checkWinnerOrCat = function() {
             matrix[1][i] === matrix[2][i] 
         )
         {   var winner = this.event.target.innerText 
+            gameOver = true;
             gameWinner(winner)
         };
         //left diagonal
@@ -52,6 +70,7 @@ var checkWinnerOrCat = function() {
             matrix[1][1] === matrix[2][2] 
         )
         {   var winner = this.event.target.innerText 
+            gameOver = true;
             gameWinner(winner)
         };
         //right diagonal
@@ -61,21 +80,15 @@ var checkWinnerOrCat = function() {
             matrix[1][1] === matrix[0][2] 
         )
         {   var winner = this.event.target.innerText 
+            gameOver = true;
             gameWinner(winner)
         };
     }
     
-    //handle cat games
-    if (turnCount > 8) {
-        var div = document.getElementsByClassName("board-container");
-        //set the board to have a red border
-        div[0].setAttribute("class", "board-container-cat");
-        winBox.innerText = "Tie!";
-        winBox.setAttribute("class", "winner-text-visible");
-        document.getElementById("new-game-btn").innerText = "Rematch?";
-    }
+
 }
 
+//fn to handle wins
 var gameWinner = function(winText) {
     var winnerText = winText;
     var winner = document.getElementById("container").children
@@ -86,7 +99,15 @@ var gameWinner = function(winText) {
     }
     winBox.innerText = winnerText + " Wins!";
     winBox.setAttribute("class", "winner-text-visible")
-    
+   
+    if (winnerText === "X") {
+        winCount.X ++;
+        document.getElementById("win-x").innerText = winCount.X;
+    }
+    if (winnerText === "O") {
+        winCount.O ++;
+        document.getElementById("win-o").innerText = winCount.O;
+    }
 }
 
 //onClick handler
@@ -96,16 +117,16 @@ let clickBox = function(event) {
     var box = target.innerText
 
     if (box === "") {
-        if (playerTurn === 0) {
+        if (playerTurn === "X") {
             target.innerText = "X";
-            playerTurn = 1;
+            playerTurn = "O";
             document.getElementById("turn-text").innerText ="O's Turn";
             turnCount ++;
             target.setAttribute("name", "clicked")
             checkWinnerOrCat();
         } else {
             target.innerText = "O";
-            playerTurn = 0;
+            playerTurn = "X";
             document.getElementById("turn-text").innerText ="X's Turn";
             turnCount ++;
             target.setAttribute("name", "clicked")
@@ -114,6 +135,7 @@ let clickBox = function(event) {
     }
 }
 
+//reset games
 let clearBoxes = function() {
     //create an array of all our 'box' elements, then we iterate through and change the val
     var allBoxes = document.getElementById("container").children;
@@ -127,6 +149,9 @@ let clearBoxes = function() {
     document.getElementById("container").setAttribute("class", "board-container");
     document.getElementById("winner-text").innerText = "";
     document.getElementById("winner-text").setAttribute("class", "winner");
+    document.getElementById("new-game-btn").innerText = "Restart";
+    gameOver = false;
+
 
 } 
 
