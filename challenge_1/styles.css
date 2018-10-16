@@ -118,11 +118,13 @@ button {
     padding: 10px;
     font-family: 'Montserrat', sans-serif;
     transition: all 0.30s;
-    background-color: rgb(221, 219, 219);
+    background-color: white;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
+
 }
 
 button:hover {
-    background-color: white;
+    background-color: rgb(221, 219, 219);
     transition: all 0.30s;
     box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.15);
 
