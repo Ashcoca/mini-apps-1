@@ -55,10 +55,10 @@
 
 
 .text-container {
-    width: 200px;
+    width: 25%;
 }
 
-h2 {
+h1 {
     margin: 5px;
     margin-left: 20px;
     font-family: 'Montserrat', sans-serif;
@@ -77,4 +77,28 @@ h3 {
 
 .winner-text-visible {
     visibility: visible;
+}
+
+#score-container {
+    width: 25%;
+}
+
+#win-box-container {
+    font-family: 'Roboto Mono', monospace;
+    border: 2px;
+    
+
+}
+
+button {
+    border: none;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+    transition: all 0.10s;
+}
+
+button:hover {
+    border: 1px;
+    border-style: solid;
+    border-color: black;
 }

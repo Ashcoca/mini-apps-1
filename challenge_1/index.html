@@ -2,12 +2,13 @@
     <head>
         <title>TIC! TAC! TOEEEEE!</title>
         <script src = 'app.js'></script>
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto+Mono" rel="stylesheet">
         <link rel = "stylesheet" href="styles.css">
     </head>
     <body>
         <div class="text-container">
-            <center><h2>TIC TAC TOE</h2>
+            <center><h1>TIC TAC TOE</h1>
+            <br/>
             <h3 id="turn-text">X's Turn</h3></center>
         </div>
 
@@ -33,11 +34,19 @@
 
         </div>
         <br/>
-        <button class="button" id="new-game-btn" onclick="clearBoxes()">New Game</button>
-        <div id="win-box-container">
-            X : <span id="win-x">0</span>
-        <br/>
-            O : <span id="win-o">0</span>
+        <div id="score-container">
+        <center><button class="button" id="new-game-btn" onclick="clearBoxes()">New Game</button>
+        <table id="win-box-container">
+            <tr>
+                <th>X:</th>
+                <th>0</th>
+            </tr>
+            <tr>
+                <th>O:</th>
+                <th>0</th>
+            </tr>
+        </table></center>
+        </div>
         </div>
     </body>
 
