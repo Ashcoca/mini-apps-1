@@ -105,7 +105,6 @@ var gameWinner = function(winText) {
         winCount.O ++;
         document.getElementById("win-o").innerText = winCount.O;
     }
-    return;
 }
 
 //onClick handler
