@@ -6,6 +6,13 @@ const bodyParser = require('body-parser');
 
 var storage = [];
 
+// var output = `firstName,lastName,county,city,role,sales
+// Joshie,Wyattson,San Mateo,San Mateo,Broker,1000000
+// Beth Jr.,Johnson,San Mateo,Pacifica,Manager,2900000
+// Smitty,Won,San Mateo,Redwood City,Sales Person,4800000
+// Allen,Price,San Mateo,Burlingame,Sales Person,2500000
+// Beth,Johnson,San Francisco,San Francisco,Broker/Sales Person,7500000`
+
 //this line tells the server to serve up index.html for any requests to '/'
 app.use(express.static('client'));
 
@@ -16,15 +23,17 @@ app.use(bodyParser.json())
 app.post('/upload_json', (req, res) => {
     var input = req.body['input-area'];
     //there was one ; messing up my json parse? So I removed it here
-    // var cleaned = input.replace(/;/g, '');
-    var json = JSON.parse(input)
-    var output = csvFormatter(json)
-    // storage.push(json)
+    var cleaned = input.replace(/;/g, '');
+    var json = JSON.parse(cleaned);
+    var output = csvFormatter(json);
+    storage.push(output)
     // console.log(storage);
 
     res.send(output)
 });
 
+
+//this recursive function really got away from me
 var csvFormatter = function(input) {
     //implement recursion fn to format json data
     // var json = JSON.parse(input)
@@ -32,17 +41,17 @@ var csvFormatter = function(input) {
     for (var key in input) {
         jsonStorage.push(key)
     }
-    var helper = function(children) {
-        jsonStorage.push('@');
-        for (var key in children) {
-            // if (children[key] === "firstName" || "lastName" || "county" || "city" || "sales" || "children") {
-            //     continue;
-            // }
-            if(Array.isArray(children[key])) {
-                helper(children[key])
-            }
-            jsonStorage.push(children[key]);
+    var helper = function(input) {
+
+    jsonStorage.push('@')
+    for (var key in input) {
+        if (Array.isArray(input[key]) && input[key].length > 1) {
+            helper(input[key][0])
         }
+        jsonStorage.push(input[key])
+        delete input[key]
+        console.log(input)
+    }
     }
     helper(input);
     console.log(jsonStorage);
