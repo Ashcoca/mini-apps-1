@@ -79,7 +79,7 @@ var checkWinnerOrCat = function() {
         //handle cat games
         if ((turnCount === 9) && (gameOver === false))  {
 
-            var boxes = document.getElementsByClassName("box")
+            var boxes = document.getElementById("container").children
             for (var i = 0; i < boxes.length; i++) {
                 boxes[i].setAttribute("class", "box-cat")
             }
