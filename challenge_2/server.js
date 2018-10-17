@@ -33,10 +33,11 @@ app.post('/upload_json', (req, res) => {
     var output = csvFormatter(json);
     // console.log(storage);
     test = JSON.stringify(output)
-    var cleanest = test.replace(/[_a-zA-Z0-9-]/, "");
+    var cleanest = test.replace(/[^a-zA-Z0-9-_@,]/g, '');
+    var evenCleaner = cleanest.replace('@', '\n')
 
 
-    console.log(cleanest)
+    console.log(evenCleaner)
     res.end(
     `<html>
     <head>
@@ -56,7 +57,7 @@ app.post('/upload_json', (req, res) => {
             </form>
             <br/>
             <div id="confirmation">
-            ${cleanest}
+            ${evenCleaner}
             </div>
         </div>
     </body>
