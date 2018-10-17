@@ -23,16 +23,18 @@ app.post('/upload_json', (req, res) => {
     //there was one ; messing up my json parse? So I removed it here
     var cleaned = input.replace(/;/g, '');
     var json = JSON.parse(cleaned);
+    console.log(cleaned)
     var output = csvFormatter(json);
     // console.log(storage);
     test = JSON.stringify(output)
     var cleanest = test.replace(/[^a-zA-Z0-9-_@,]/g, '');
-    cleanest = cleanest.replace(' ', '\n');
+    // cleanest = cleanest.replace(/,,,/g, ',')
+    // cleanest = cleanest.replace(' ', '@');
     cleanest = cleanest.replace(/,,,/, '\n');
     var evenCleaner = cleanest.replace(/@/g, '\n');
 
 
-    console.log(evenCleaner)
+    console.log("THIS IS ", evenCleaner) //returns proper \n in cmd console
     res.end(
     `<html>
     <head>
@@ -79,7 +81,6 @@ var csvFormatter = function(input) {
         }
         jsonStorage.push(input[key])
         delete input[key]
-        console.log(input)
     }
     }
     helper(input);
