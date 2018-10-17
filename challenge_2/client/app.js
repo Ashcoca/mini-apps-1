@@ -1,5 +1,9 @@
+// const storage;
+
 //build our method for converting json to csv
 
-var storage = [];
+//function to recurse over storage array
 
-export default app;
+// module.exports
+
+// module.exports = storage = [];

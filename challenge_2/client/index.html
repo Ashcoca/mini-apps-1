@@ -6,13 +6,16 @@
     </head>
     <body>
         <div>
-            <br/>
-            <label for="input">Submit your Data</label>
             <form method="POST" action="/upload_json">
-                <input type="text" name="input" placeholder="Enter Data">
-                <input type="submit" name="submit">
+                <label for="input-area">Submit your Data</label>
+                <br/>
+                <textarea id="input-area" name="input-area" rows="3" placeholder="Enter Data"></textarea>
+                <br/><input type="submit" name="submit">
             </form>
             <br/>
+            <div id="confirmation">
+                
+            </div>
         </div>
     </body>
 
