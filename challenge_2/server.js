@@ -3,6 +3,8 @@ const app = express();
 const port = 3000;
 // const client = require('./client/app.js')
 const bodyParser = require('body-parser');
+let ejs = require('ejs');
+
 
 var storage = [];
 
@@ -16,6 +18,9 @@ var storage = [];
 //this line tells the server to serve up index.html for any requests to '/'
 app.use(express.static('client'));
 
+app.set('view engine', 'ejs');
+
+
 //this line will parse the bodies of all incoming requests
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
@@ -26,10 +31,38 @@ app.post('/upload_json', (req, res) => {
     var cleaned = input.replace(/;/g, '');
     var json = JSON.parse(cleaned);
     var output = csvFormatter(json);
-    storage.push(output)
     // console.log(storage);
+    test = JSON.stringify(output)
+    var cleanest = test.replace(/[_a-zA-Z0-9-]/, "");
 
-    res.send(output)
+
+    console.log(cleanest)
+    res.end(
+    `<html>
+    <head>
+        <title>JSON -> CSV Converter</title>
+        <script src = "app.js"></script>
+        <script src = "styles.css"></script>
+        <!-- <script src="ejs.js"></script> -->
+
+    </head>
+    <body>
+        <div>
+            <form method="POST" action="/upload_json">
+                <label for="input-area">Submit your Data</label>
+                <br/>
+                <textarea id="input-area" name="input-area" rows="3" placeholder="Enter Data"></textarea>
+                <br/><input type="submit" name="submit">
+            </form>
+            <br/>
+            <div id="confirmation">
+            ${cleanest}
+            </div>
+        </div>
+    </body>
+
+
+</html>`)
 });
 
 
@@ -54,7 +87,6 @@ var csvFormatter = function(input) {
     }
     }
     helper(input);
-    console.log(jsonStorage);
     return jsonStorage;
 
 }
