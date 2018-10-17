@@ -8,13 +8,6 @@ let ejs = require('ejs');
 
 var storage = [];
 
-// var output = `firstName,lastName,county,city,role,sales
-// Joshie,Wyattson,San Mateo,San Mateo,Broker,1000000
-// Beth Jr.,Johnson,San Mateo,Pacifica,Manager,2900000
-// Smitty,Won,San Mateo,Redwood City,Sales Person,4800000
-// Allen,Price,San Mateo,Burlingame,Sales Person,2500000
-// Beth,Johnson,San Francisco,San Francisco,Broker/Sales Person,7500000`
-
 //this line tells the server to serve up index.html for any requests to '/'
 app.use(express.static('client'));
 
@@ -34,7 +27,9 @@ app.post('/upload_json', (req, res) => {
     // console.log(storage);
     test = JSON.stringify(output)
     var cleanest = test.replace(/[^a-zA-Z0-9-_@,]/g, '');
-    var evenCleaner = cleanest.replace('@', '\n')
+    cleanest = cleanest.replace(' ', '\n');
+    cleanest = cleanest.replace(/,,,/, '\n');
+    var evenCleaner = cleanest.replace(/@/g, '\n');
 
 
     console.log(evenCleaner)
