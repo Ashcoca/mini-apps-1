@@ -136,7 +136,7 @@ let clickBox = function(event) {
 let clearBoxes = function() {
     //create an array of all our 'box' elements, then we iterate through and change the val
     var allBoxes = document.getElementById("container").children;
-    for (var i = 0; i < allBoxes.length-1; i++) {
+    for (var i = 0; i < allBoxes.length; i++) {
         allBoxes[i].innerText = "";
         allBoxes[i].setAttribute("class", "box");
     }
