@@ -6,24 +6,22 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            form1: ["Name", "E-mail", "Password"],
-            form2: ["Address Line One", "Address Line Two", "City, ST"],
-            form3: ["Credit Card", "cvv", "Zip Code"]
+            form: [ 
+            ["Name", "E-mail", "Password"],
+            ["Address Line One", "Address Line Two", "City, ST"],
+            ["Credit Card", "cvv", "Zip Code"]
+            ]
         }
     }
-
 
     render() {
         return (
             <div id="form container">
             <form id="name">
-                {this.state.label.form1[1]}
-                <input type="text"></input><br/>
-                {this.state.label.form1[1]}
-                <input type="text"></input><br/>
-                {this.state.label.form1[1]}
-                <input type="text"></input><br/>
-                <input type="submit"></input>
+            {this.state.form[0][0]}:<br/><input type="text"></input><br/>
+            {this.state.form[0][1]}:<br/><input type="text"></input><br/>
+            {this.state.form[0][2]}:<br/><input type="text"></input><br/>
+            <br/><input type="submit"></input>
             </form>
             </div>
         )
