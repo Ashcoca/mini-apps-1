@@ -1,31 +1,11 @@
-/* .board {
-    /* position: relative;
-    margin: 0 auto;
-    border-color: white;
-    border-width: 1px;
-    border-style: solid;
-    border-color: white;
-    background-color: #000000 */
 
-
-/* td {
-    border-width: 1px;
-    border-style: solid;
-    border-color: black;
-    padding: 25px;
-}
-
-td:hover {
-    background-color: lightgreen;
-} */
 
 .board {
 
     display: flex;
     flex-direction: column;
     border-color: black;
-    border-width: 1px;
-    border-style: solid;
+
 }
 
 .row {
@@ -44,12 +24,48 @@ td:hover {
     border-style: solid;
     border-width: 1px;
     border-color: black;
+    text-align: center;
+    vertical-align: middle;
 }
 
 .tan {
-    background-color: tan;
+    background-color: red;
 }
 
 .white {
-    background-color: whitesmoke;
+    background-color: lightgrey;
 }
+
+.light {
+    height: 85%;
+    width: 85%;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    border-color:white;
+    border-width: 2px;
+    border-style:solid;
+    box-shadow: 3px 6px;
+    vertical-align: middle;
+
+}
+
+.dark {
+    height: 85%;
+    width: 85%;
+    background-color: black;
+    border-radius: 50%;
+    display: inline-block;
+    border-color: white;
+    border-width: 2px;
+    border-style:solid;
+    vertical-align: middle;
+    box-shadow: 3px 6px;
+
+ 
+}
+
+.square:hover {
+    background-color: green;
+}
+

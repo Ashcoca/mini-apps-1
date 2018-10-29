@@ -14,16 +14,4 @@ class Row extends React.Component {
     }
 }
 
-
-/*
-    render() {
-        let board = [];
-        for (let i = 0; i < 8; i++) {
-            board.push(<Row number={i}/>)
-        }
-        return <div className="board">{board}</div>
-    }
-}
-*/
-
 export default Row;

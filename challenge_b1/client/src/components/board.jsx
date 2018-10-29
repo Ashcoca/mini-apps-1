@@ -2,6 +2,42 @@ import React from 'react';
 import Row from './row.jsx';
 
 class Board extends React.Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            board: [
+                [1], [0], [1], [0], [1], [0], [1], [0],
+                [0], [1], [0], [1], [0], [1], [0], [1],
+                [1], [0], [1], [0], [1], [0], [1], [0],
+                [0], [0], [0], [0], [0], [0], [0], [0],
+                [0], [0], [0], [0], [0], [0], [0], [0],
+                [2], [0], [2], [0], [2], [0], [2], [0],
+                [0], [2], [0], [2], [0], [2], [0], [2],
+                [2], [0], [2], [0], [2], [0], [2], [0],
+            ],
+            playerTurn: 1,
+            possibleMoves: []
+        }
+    }
+
+/*
+                  0    1    2    3    4    5    6    7
+            0    [1], [0], [1], [0], [1], [0], [1], [0],
+            1    [0], [1], [0], [1], [0], [1], [0], [1],
+            2    [1], [0], [1], [0], [1], [0], [1], [0],
+            3    [0], [0], [0], [0], [0], [0], [0], [0],
+            4    [0], [0], [0], [0], [0], [0], [0], [0],
+            5    [2], [0], [2], [0], [2], [0], [2], [0],
+            6    [0], [2], [0], [2], [0], [2], [0], [2],
+            7    [2], [0], [2], [0], [2], [0], [2], [0],
+
+*/
+
+    handleClick() {
+//possible moves always -1 row, and +1, -1 to row
+//i.e. [2, 5] can move to [1, 4] [3, 4]
+//think I'm on to something here, but I need to get ready to go
+    }
 
     render() {
         let board = [];
@@ -13,38 +49,6 @@ class Board extends React.Component {
         );
     }
 }
-
-
-
-//         for (let i = 0; i < tanSpaces.length; i++) {
-//             if (this.props.number === tanSpaces[i]) {
-//                 this.props.number.className += "tan";
-//             } else {
-//                 this.props.number.className += "white";
-//             };
-//         }
-//     return(
-//         <div className={yourClassName}>{this.props.number}</div>
-//     );
-// }
-
-
-// class Pieces extends React.Component {
-
-//     render() {
-//         let whitePieces = [41, 43, 45, 47, 50, 52, 54, 57, 59, 61, 63];
-//         let tanPieces = [1, 3, 5, 7, 10, 12, 14, 16, 17, 19, 21, 23];
-    
-//         for (let i = 0; i < whitePieces.length; i++) {
-//             if (this.props.number === whitePieces[i]) {
-//                 this.props.number.className += " white-piece"
-//             }
-//         }
-//     }
-// }
-
-
-
 
 export default Board;
 
